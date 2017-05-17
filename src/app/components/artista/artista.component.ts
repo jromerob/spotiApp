@@ -19,7 +19,7 @@ export class ArtistaComponent implements OnInit {
         console.log(id);
         this._spotifyService.getArtista(id)
           .subscribe(response => {
-              this.artista = response
+              this.artista = response;
             });
       });
   }
