@@ -79,5 +79,14 @@ hr{
   margin-bottom: 4ex;
 }
 .margin-top-bottom{
-  margin: 4ex 0; 
+  margin: 4ex 0;
+}
+
+.img-artista{
+  width: 64px;
+  height: 64px;
+}
+
+.card-title {
+    color: black;
 }
