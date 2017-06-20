@@ -1,1 +1,35 @@
-<pre>{{artista | json}}</pre>
+<div class="container margin-top">
+  <div class="row">
+    <div class="col-sm-3">
+      <img src="{{artista.images[1].url}}" alt="{{artista.name}}" class="img-circle img-fluid" />
+    </div>
+    <div class="col-sm-9">
+      <h3>{{artista.name}}</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <h4>TOP <small>tracks</small></h4>
+    </div>
+
+    <div class="col-12" *ngFor="let pista of pistas">
+      <div class="row">
+        <div class="col-2">
+          <img src="{{pista.album.images[2].url}}" alt="">
+        </div>
+        <div class="col-10">
+          <p>{{pista.name}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <pre >
+  {{artista | json}}
+  <hr />
+  <hr />
+  <div class="col-xs-12" *ngFor="let pista of pistas">
+    {{pista | json}}
+  </div>
+</pre> -->

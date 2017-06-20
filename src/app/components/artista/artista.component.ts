@@ -4,11 +4,11 @@ import { SpotifyService } from '../../services/spotify.service';
 
 @Component({
   selector: 'app-artista',
-  templateUrl: './artista.component.html',
-  styleUrls: ['./artista.component.css']
+  templateUrl: './artista.component.html'
 })
 export class ArtistaComponent implements OnInit {
   artista: any;
+  pistas: any[];
 
   constructor(private activatedRoute: ActivatedRoute, private _spotifyService: SpotifyService) { }
 
@@ -20,6 +20,11 @@ export class ArtistaComponent implements OnInit {
         this._spotifyService.getArtista(id)
           .subscribe(response => {
               this.artista = response;
+            });
+
+        this._spotifyService.getTop(id)
+          .subscribe(response => {
+              this.pistas = response.tracks;
             });
       });
   }
