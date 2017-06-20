@@ -1,24 +1,61 @@
-<div class="container margin-top">
+<div class="container margin-top" *ngIf="artista"> <!-- evita que se renderize sin tener aun el artista -->
   <div class="row">
     <div class="col-sm-3">
-      <img src="{{artista.images[1].url}}" alt="{{artista.name}}" class="img-circle img-fluid" />
+      <img [src]="artista.images[1].url" [alt]="artista.name" class="img-circle img-fluid" />
     </div>
     <div class="col-sm-9">
       <h3>{{artista.name}}</h3>
+      <a [routerLink]="['/buscar']" class="btn btn-default">
+          Volver
+      </a>
     </div>
   </div>
-  <div class="row">
+  <div class="row" *ngIf="pistas">
     <div class="col-12">
       <h4>TOP <small>tracks</small></h4>
     </div>
 
-    <div class="col-12" *ngFor="let pista of pistas">
+
+    <div class="col-12">
       <div class="row">
-        <div class="col-2">
-          <img src="{{pista.album.images[2].url}}" alt="">
+        <div class="col-1">
+          #
         </div>
-        <div class="col-10">
-          <p>{{pista.name}}</p>
+        <div class="col-2">
+          Portada
+        </div>
+        <div class="col-3">
+          Nombre
+        </div>
+        <div class="col-2">
+          Popularidad
+        </div>
+        <div class="col-4">
+          Reproducir
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12" *ngFor="let pista of pistas; let i=index;">
+      <div class="row">
+        <div class="col-1">
+          {{ i + 1 }}
+        </div>
+        <div class="col-2">
+          <img [src]="pista.album.images[2].url" alt="">
+        </div>
+        <div class="col-3">
+          {{pista.name}}
+        </div>
+        <div class="col-2">
+          {{pista.popularity}}
+        </div>
+        <div class="col-4">
+          <!-- <audio controls>
+            <source [src]="pista.preview_url" />
+            Tu navegador no soporta audio
+          </audio> -->
+          <iframe [src]="pista.uri| domseguro:'https://open.spotify.com/embed?uri='" width="300" height="80" frameborder="0" allowtransparency="true"></iframe>
         </div>
       </div>
     </div>
